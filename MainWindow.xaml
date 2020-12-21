@@ -1,0 +1,422 @@
+﻿<Window x:Class="TelegramBotWpf.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:TelegramBotWpf" mc:Ignorable="d" Title="InfraBot.IO configurator" Height="450" Width="700" WindowStartupLocation="CenterScreen" Icon="images/icon.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="24"/>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_New Config" Click="MainMenuNewConfig_Click"/>
+                    <MenuItem Header="_Open File" Click="MainMenuOpenConfig_Click"/>
+                    <MenuItem Header="_Save File" Click="MainMenuSaveConfig_Click"/>
+                    <MenuItem Header="_Close File" Click="MainMenuCloseFile_Click"/>
+                    <Separator/>
+                    <MenuItem Header="_Exit" Click="MainMenuExit_Click"/>
+                </MenuItem>
+                <MenuItem Header="_Service">
+                    <MenuItem Header="_Start service" Click="MainMenuStopService_Click"/>
+                    <MenuItem Header="_Stop service" Click="MainMenuStartService_Click"/>
+                </MenuItem>
+                <MenuItem Header="_Help">
+                    <MenuItem Header="_InfraBot.io" Click="MainMenuInfrabotIO_Click"/>
+                    <MenuItem Header="_Documentation" Click="MainMenuDocumentation_Click"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1">
+            <Grid Name="MainPanelData" IsEnabled="false">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="112"/>
+                    <RowDefinition Height="112"/>
+                    <RowDefinition Height="112"/>
+                    <RowDefinition Height="112"/>
+                    <RowDefinition Height="112"/>
+                    <RowDefinition Height="112"/>
+                    <RowDefinition Height="112"/>
+                    <RowDefinition Height="112"/>
+                    <RowDefinition Height="112"/>
+                    <RowDefinition Height="112"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="256"/>
+                    <ColumnDefinition Width="32"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Rectangle Grid.Row="0" Grid.ColumnSpan="3" Fill="AliceBlue"/>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Your Telegram Bot Token" TextAlignment="Center" VerticalAlignment="Center"/>
+                <Button Name="telegram_bot_token_i" Grid.Column="1" Grid.Row="0" Click="ShowInfo_Click" Margin="0 5 0 0">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent" Height="25">
+                        <Image Source="images/i.png" Width="20" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <TextBox Name="telegram_bot_token" Grid.Column="2" Grid.Row="0" Text="" Margin="10 2 10 2"/>
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="Telegram Enable Logging" TextAlignment="Center" VerticalAlignment="Center"/>
+                <Button Name="telegram_enable_logging_i" Grid.Column="1" Grid.Row="1" Click="ShowInfo_Click" Margin="0 5 0 0">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent" Height="25">
+                        <Image Source="images/i.png" Width="20" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <CheckBox Name="telegram_enable_logging" Grid.Column="2" Grid.Row="1" Content="False" Margin="10 0 10 0" VerticalAlignment="Center" Checked="ChangeCheckItemText" Unchecked="ChangeCheckItemText"/>
+                <Rectangle Grid.Row="2" Grid.ColumnSpan="3" Fill="AliceBlue"/>
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="Telegram Enable Reminder command" TextAlignment="Center" VerticalAlignment="Center"/>
+                <Button Name="telegram_enable_reminder_i" Grid.Column="1" Grid.Row="2" Click="ShowInfo_Click" Margin="0 5 0 0">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent" Height="25">
+                        <Image Source="images/i.png" Width="20" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <CheckBox Name="telegram_enable_reminder" Grid.Column="2" Grid.Row="2" Content="False" Margin="10 0 10 0" VerticalAlignment="Center" Checked="ChangeCheckItemText" Unchecked="ChangeCheckItemText"/>
+                <TextBlock Grid.Column="0" Grid.Row="3" Text="Telegram Enable ReloadConfig command" TextAlignment="Center" VerticalAlignment="Center"/>
+                <Button Name="telegram_enable_reloadconfig_i" Grid.Column="1" Grid.Row="3" Click="ShowInfo_Click" Margin="0 5 0 0">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent" Height="25">
+                        <Image Source="images/i.png" Width="20" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <CheckBox Name="telegram_enable_reloadconfig" Grid.Column="2" Grid.Row="3" Content="False" Margin="10 0 10 0" VerticalAlignment="Center" Checked="ChangeCheckItemText" Unchecked="ChangeCheckItemText"/>
+                <Rectangle Grid.Row="4" Grid.ColumnSpan="3" Fill="AliceBlue"/>
+                <TextBlock Grid.Column="0" Grid.Row="4" Text="Telegram Enable Emergency command" TextAlignment="Center" VerticalAlignment="Center"/>
+                <Button Name="telegram_enable_emergency_i" Grid.Column="1" Grid.Row="4" Click="ShowInfo_Click" Margin="0 5 0 0">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent" Height="25">
+                        <Image Source="images/i.png" Width="20" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <CheckBox Name="telegram_enable_emergency" Grid.Column="2" Grid.Row="4" Content="False" Margin="10 0 10 0" VerticalAlignment="Center" Checked="ChangeCheckItemText" Unchecked="ChangeCheckItemText"/>
+                <TextBlock Grid.Column="0" Grid.Row="5" Text="Your PowerShell installed path" TextAlignment="Center" VerticalAlignment="Center"/>
+                <Button Name="telegram_powershell_path_i" Grid.Column="1" Grid.Row="5" Click="ShowInfo_Click" Margin="0 5 0 0">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent" Height="25">
+                        <Image Source="images/i.png" Width="20" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <TextBox Name="telegram_powershell_path" Grid.Column="2" Grid.Row="5" Text="" Margin="10 2 10 2"/>
+                <Rectangle Grid.Row="6" Grid.ColumnSpan="3" Fill="AliceBlue"/>
+                <TextBlock Grid.Column="0" Grid.Row="6" Text="PowerShell Execution Policy argument" TextAlignment="Center" VerticalAlignment="Center"/>
+                <Button Name="telegram_powershell_executionpolicy_i" Grid.Column="1" Grid.Row="6" Click="ShowInfo_Click" Margin="0 5 0 0">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent" Height="25">
+                        <Image Source="images/i.png" Width="20" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <TextBox Name="telegram_powershell_executionpolicy" Grid.Column="2" Grid.Row="6" Text="" Margin="10 2 10 2"/>
+                <TextBlock Grid.Column="0" Grid.Row="7" Text="Path for logs if Logging is enabled" TextAlignment="Center" VerticalAlignment="Center"/>
+                <Button Name="telegram_logs_path_i" Grid.Column="1" Grid.Row="7" Click="ShowInfo_Click" Margin="0 5 0 0">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent" Height="25">
+                        <Image Source="images/i.png" Width="20" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <TextBox Name="telegram_logs_path" Grid.Column="2" Grid.Row="7" Text="" Margin="10 2 10 2"/>
+                <Rectangle Grid.Row="8" Grid.ColumnSpan="3" Fill="AliceBlue"/>
+                <TextBlock Grid.Column="0" Grid.Row="8" Text="Path for logs if Logging is enabled" TextAlignment="Center" VerticalAlignment="Center"/>
+                <Button Name="telegram_result_max_length_i" Grid.Column="1" Grid.Row="8" Click="ShowInfo_Click" Margin="0 5 0 0">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent" Height="25">
+                        <Image Source="images/i.png" Width="20" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <TextBox Name="telegram_result_max_length" Grid.Column="2" Grid.Row="8" Text="" Margin="10 2 10 2" PreviewTextInput="OnlyNumberCheckTextbox"/>
+                <TextBlock Grid.Column="0" Grid.Row="9" Text="List of Chats IDs who can send commands to Bot" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center"/>
+                <Button Name="telegram_allowed_chats_id_i" Grid.Column="1" Grid.Row="9" Click="ShowInfo_Click" Margin="0 5 0 0" Height="24">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent" Height="25">
+                        <Image Source="images/i.png" Width="20" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <Grid Grid.Column="2" Grid.Row="9">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Name="telegram_allowed_chats_id_add_button" Content="Add" Margin="10 5 0 2" Grid.Row="0" Width="45" HorizontalAlignment="Left" Click="AddItemToAllowedList"/>
+                    <TextBox Name="telegram_allowed_chats_id_add_text" Grid.Row="0" Text="" Margin="65 5 10 2"/>
+                    <ListBox Name="telegram_allowed_chats_id_add_list" Margin="10 5 10 2" Grid.Row="1">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="2" Orientation="Horizontal">
+                                    <Button Name="telegram_allowed_chats_id_delete_button" Margin="0" Height="22" Width="22" Click="DeleteItemFromAllowedList">
+                                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent">
+                                            <Image Source="images/x.png" Width="15" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Button>
+                                    <TextBlock Margin="10 0 2 0" Text="{Binding Path=ID}" HorizontalAlignment="Left"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+                <Rectangle Grid.Row="10" Grid.ColumnSpan="3" Fill="AliceBlue"/>
+                <TextBlock Grid.Column="0" Grid.Row="10" Text="List of Users IDs who can send commands to Bot" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center"/>
+                <Button Name="telegram_allowed_users_id_i" Grid.Column="1" Grid.Row="10" Click="ShowInfo_Click" Margin="0 5 0 0" Height="24">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent" Height="25">
+                        <Image Source="images/i.png" Width="20" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <Grid Grid.Column="2" Grid.Row="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Name="telegram_allowed_users_id_add_button" Content="Add" Margin="10 5 0 2" Grid.Row="0" Width="45" HorizontalAlignment="Left" Click="AddItemToAllowedList"/>
+                    <TextBox Name="telegram_allowed_users_id_add_text" Grid.Row="0" Text="" Margin="65 5 10 2"/>
+                    <ListBox Name="telegram_allowed_users_id_add_list" Margin="10 5 10 2" Grid.Row="1">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="2" Orientation="Horizontal">
+                                    <Button Name="telegram_allowed_users_id_delete_button" Margin="0" Height="22" Width="22" Click="DeleteItemFromAllowedList">
+                                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent">
+                                            <Image Source="images/x.png" Width="15" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Button>
+                                    <TextBlock Margin="10 0 2 0" Text="{Binding Path=ID}" HorizontalAlignment="Left"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+                <TextBlock Grid.Column="0" Grid.Row="11" Text="List of Users IDs who can send `/emergency` to Bot" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center"/>
+                <Button Name="telegram_allowed_users_id_emergency_i" Grid.Column="1" Grid.Row="11" Click="ShowInfo_Click" Margin="0 5 0 0" Height="24">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent" Height="25">
+                        <Image Source="images/i.png" Width="20" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <Grid Grid.Column="2" Grid.Row="11">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Name="telegram_allowed_users_id_emergency_add_button" Content="Add" Margin="10 5 0 2" Grid.Row="0" Width="45" HorizontalAlignment="Left" Click="AddItemToAllowedList"/>
+                    <TextBox Name="telegram_allowed_users_id_emergency_add_text" Grid.Row="0" Text="" Margin="65 5 10 2"/>
+                    <ListBox Name="telegram_allowed_users_id_emergency_list" Margin="10 5 10 2" Grid.Row="1">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="2" Orientation="Horizontal">
+                                    <Button Name="telegram_allowed_users_id_emergency_delete_button" Margin="0" Height="22" Width="22" Click="DeleteItemFromAllowedList">
+                                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent">
+                                            <Image Source="images/x.png" Width="15" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Button>
+                                    <TextBlock Margin="10 0 2 0" Text="{Binding Path=ID}" HorizontalAlignment="Left"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+                <Rectangle Grid.Row="12" Grid.ColumnSpan="3" Fill="AliceBlue"/>
+                <TextBlock Grid.Column="0" Grid.Row="12" Text="List of Chats IDs who can send `/emergency` to Bot" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center"/>
+                <Button Name="telegram_allowed_chats_id_emergency_i" Grid.Column="1" Grid.Row="12" Click="ShowInfo_Click" Margin="0 5 0 0" Height="24">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent" Height="25">
+                        <Image Source="images/i.png" Width="20" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <Grid Grid.Column="2" Grid.Row="12">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Name="telegram_allowed_chats_id_emergency_add_button" Content="Add" Margin="10 5 0 2" Grid.Row="0" Width="45" HorizontalAlignment="Left" Click="AddItemToAllowedList"/>
+                    <TextBox Name="telegram_allowed_chats_id_emergency_add_text" Grid.Row="0" Text="" Margin="65 5 10 2"/>
+                    <ListBox Name="telegram_allowed_chats_id_emergency_list" Margin="10 5 10 2" Grid.Row="1">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="2" Orientation="Horizontal">
+                                    <Button Name="telegram_allowed_chats_id_emergency_delete_button" Margin="0" Height="22" Width="22" Click="DeleteItemFromAllowedList">
+                                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent">
+                                            <Image Source="images/x.png" Width="15" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Button>
+                                    <TextBlock Margin="10 0 2 0" Text="{Binding Path=ID}" HorizontalAlignment="Left"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+                <TextBlock Grid.Column="0" Grid.Row="13" Text="List of Users IDs who can send `/reloadconfig` to Bot" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center"/>
+                <Button Name="telegram_allowed_users_id_reloadconfig_i" Grid.Column="1" Grid.Row="13" Click="ShowInfo_Click" Margin="0 5 0 0" Height="24">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent" Height="25">
+                        <Image Source="images/i.png" Width="20" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <Grid Grid.Column="2" Grid.Row="13">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Name="telegram_allowed_users_id_reloadconfig_add_button" Content="Add" Margin="10 5 0 2" Grid.Row="0" Width="45" HorizontalAlignment="Left" Click="AddItemToAllowedList"/>
+                    <TextBox Name="telegram_allowed_users_id_reloadconfig_add_text" Grid.Row="0" Text="" Margin="65 5 10 2"/>
+                    <ListBox Name="telegram_allowed_users_id_reloadconfig_list" Margin="10 5 10 2" Grid.Row="1">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="2" Orientation="Horizontal">
+                                    <Button Name="telegram_allowed_users_id_reloadconfig_delete_button" Margin="0" Height="22" Width="22" Click="DeleteItemFromAllowedList">
+                                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent">
+                                            <Image Source="images/x.png" Width="15" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Button>
+                                    <TextBlock Margin="10 0 2 0" Text="{Binding Path=ID}" HorizontalAlignment="Left"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+                <Rectangle Grid.Row="14" Grid.ColumnSpan="3" Fill="AliceBlue"/>
+                <TextBlock Grid.Column="0" Grid.Row="14" Text="List of Chats IDs who can send `/reloadconfig` to Bot" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center"/>
+                <Button Name="telegram_allowed_chats_id_reloadconfig_i" Grid.Column="1" Grid.Row="14" Click="ShowInfo_Click" Margin="0 5 0 0" Height="24">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent" Height="25">
+                        <Image Source="images/i.png" Width="20" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <Grid Grid.Column="2" Grid.Row="14">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Name="telegram_allowed_chats_id_reloadconfig_add_button" Content="Add" Margin="10 5 0 2" Grid.Row="0" Width="45" HorizontalAlignment="Left" Click="AddItemToAllowedList"/>
+                    <TextBox Name="telegram_allowed_chats_id_reloadconfig_add_text" Grid.Row="0" Text="" Margin="65 5 10 2"/>
+                    <ListBox Name="telegram_allowed_chats_id_reloadconfig_list" Margin="10 5 10 2" Grid.Row="1">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="2" Orientation="Horizontal">
+                                    <Button Name="telegram_allowed_chats_id_reloadconfig_delete_button" Margin="0" Height="22" Width="22" Click="DeleteItemFromAllowedList">
+                                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent">
+                                            <Image Source="images/x.png" Width="15" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Button>
+                                    <TextBlock Margin="10 0 2 0" Text="{Binding Path=ID}" HorizontalAlignment="Left"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+                <TextBlock Grid.Column="0" Grid.Row="15" Text="List of Users IDs who can send `/getcommands` to Bot" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center"/>
+                <Button Name="telegram_allowed_users_id_getcommands_i" Grid.Column="1" Grid.Row="15" Click="ShowInfo_Click" Margin="0 5 0 0" Height="24">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent" Height="25">
+                        <Image Source="images/i.png" Width="20" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <Grid Grid.Column="2" Grid.Row="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Name="telegram_allowed_users_id_getcommands_add_button" Content="Add" Margin="10 5 0 2" Grid.Row="0" Width="45" HorizontalAlignment="Left" Click="AddItemToAllowedList"/>
+                    <TextBox Name="telegram_allowed_users_id_getcommands_add_text" Grid.Row="0" Text="" Margin="65 5 10 2"/>
+                    <ListBox Name="telegram_allowed_users_id_getcommands_list" Margin="10 5 10 2" Grid.Row="1">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="2" Orientation="Horizontal">
+                                    <Button Name="telegram_allowed_users_id_getcommands_delete_button" Margin="0" Height="22" Width="22" Click="DeleteItemFromAllowedList">
+                                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent">
+                                            <Image Source="images/x.png" Width="15" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Button>
+                                    <TextBlock Margin="10 0 2 0" Text="{Binding Path=ID}" HorizontalAlignment="Left"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+                <Rectangle Grid.Row="16" Grid.ColumnSpan="3" Fill="AliceBlue"/>
+                <TextBlock Grid.Column="0" Grid.Row="16" Text="List of Chats IDs who can send `/getcommands` to Bot" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center"/>
+                <Button Name="telegram_allowed_chats_id_getcommands_i" Grid.Column="1" Grid.Row="16" Click="ShowInfo_Click" Margin="0 5 0 0" Height="24">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent" Height="25">
+                        <Image Source="images/i.png" Width="20" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <Grid Grid.Column="2" Grid.Row="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Name="telegram_allowed_chats_id_getcommands_add_button" Content="Add" Margin="10 5 0 2" Grid.Row="0" Width="45" HorizontalAlignment="Left" Click="AddItemToAllowedList"/>
+                    <TextBox Name="telegram_allowed_chats_id_getcommands_add_text" Grid.Row="0" Text="" Margin="65 5 10 2"/>
+                    <ListBox Name="telegram_allowed_chats_id_getcommands_list" Margin="10 5 10 2" Grid.Row="1">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="2" Orientation="Horizontal">
+                                    <Button Name="telegram_allowed_chats_id_getcommands_delete_button" Margin="0" Height="22" Width="22" Click="DeleteItemFromAllowedList">
+                                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent">
+                                            <Image Source="images/x.png" Width="15" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Button>
+                                    <TextBlock Margin="10 0 2 0" Text="{Binding Path=ID}" HorizontalAlignment="Left"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+                <TextBlock Grid.Column="0" Grid.Row="17" Text="List of Users IDs who can send `/remindme` to Bot" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center"/>
+                <Button Name="telegram_allowed_users_id_remindme_i" Grid.Column="1" Grid.Row="17" Click="ShowInfo_Click" Margin="0 5 0 0" Height="24">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent" Height="25">
+                        <Image Source="images/i.png" Width="20" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <Grid Grid.Column="2" Grid.Row="17">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Name="telegram_allowed_users_id_remindme_add_button" Content="Add" Margin="10 5 0 2" Grid.Row="0" Width="45" HorizontalAlignment="Left" Click="AddItemToAllowedList"/>
+                    <TextBox Name="telegram_allowed_users_id_remindme_add_text" Grid.Row="0" Text="" Margin="65 5 10 2"/>
+                    <ListBox Name="telegram_allowed_users_id_remindme_list" Margin="10 5 10 2" Grid.Row="1">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="2" Orientation="Horizontal">
+                                    <Button Name="telegram_allowed_users_id_remindme_delete_button" Margin="0" Height="22" Width="22" Click="DeleteItemFromAllowedList">
+                                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent">
+                                            <Image Source="images/x.png" Width="15" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Button>
+                                    <TextBlock Margin="10 0 2 0" Text="{Binding Path=ID}" HorizontalAlignment="Left"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+                <Rectangle Grid.Row="18" Grid.ColumnSpan="3" Fill="AliceBlue"/>
+                <TextBlock Grid.Column="0" Grid.Row="18" Text="List of Chats IDs who can send `/remindme` to Bot" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center"/>
+                <Button Name="telegram_allowed_chats_id_remindme_i" Grid.Column="1" Grid.Row="18" Click="ShowInfo_Click" Margin="0 5 0 0" Height="24">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent" Height="25">
+                        <Image Source="images/i.png" Width="20" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <Grid Grid.Column="2" Grid.Row="18">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Name="telegram_allowed_chats_id_remindme_add_button" Content="Add" Margin="10 5 0 2" Grid.Row="0" Width="45" HorizontalAlignment="Left" Click="AddItemToAllowedList"/>
+                    <TextBox Name="telegram_allowed_chats_id_remindme_add_text" Grid.Row="0" Text="" Margin="65 5 10 2"/>
+                    <ListBox Name="telegram_allowed_chats_id_remindme_list" Margin="10 5 10 2" Grid.Row="1">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="2" Orientation="Horizontal">
+                                    <Button Name="telegram_allowed_chats_id_remindme_delete_button" Margin="0" Height="22" Width="22" Click="DeleteItemFromAllowedList">
+                                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent">
+                                            <Image Source="images/x.png" Width="15" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Button>
+                                    <TextBlock Margin="10 0 2 0" Text="{Binding Path=ID}" HorizontalAlignment="Left"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+                <TextBlock Grid.Column="0" Grid.Row="19" Text="Commands" TextAlignment="Center" VerticalAlignment="Center"/>
+                <Button Name="telegram_commands_i" Grid.Column="1" Grid.Row="19" Click="ShowInfo_Click" Margin="0" Height="24">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent" Height="25">
+                        <Image Source="images/i.png" Width="20" Height="20"/>
+                    </StackPanel>
+                </Button>
+                <Button Grid.Column="2" Grid.Row="19" Margin="10 2 10 2" Height="24" Content="..." Width="64" HorizontalAlignment="Left" Click="ShowCommandsWindow"/>
+            </Grid>
+        </ScrollViewer>
+        <Rectangle Grid.Row="2" Fill="AliceBlue"/>
+    </Grid>
+</Window>
