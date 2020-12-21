@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="iio/assets/images/banner.png" alt="infrabot-logo" width="900px" height="97px"/>
+  <img src="igtio/assets/images/banner.png" alt="infrabot-logo" width="900px" height="97px"/>
 </p>
 
 <h1 align="center">infrabot GUI Configurator - easily configure your infrastructure Telegram bot</h1>
 <p align="center">
-  <img src="iio/assets/images/infrabot_gui.png" alt="infrabot-logo" width="120px" height="120px"/>
+  <img src="igtio/assets/images/infrabot_gui.png" alt="infrabot-logo" width="120px" height="120px"/>
   <br>
   <i>infrabot is a system service which allows you to create your own commandlets to control your infrastructure using Telegram Bot</i>
   <br>
