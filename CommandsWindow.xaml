@@ -67,7 +67,7 @@
                         </StackPanel>
                     </Button>
                     <TextBox Name="command_starts_with" Grid.Column="2" Grid.Row="0" Text="" Margin="10 2 10 2"/>
-                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Which parts of this command contain data be sent to your EXE or PowerShell script as arguments" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Which parts of this command contain data to be sent to your EXE or PowerShell script as arguments" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center"/>
                     <Button Name="command_data_id_i" Grid.Column="1" Grid.Row="1" Click="ShowInfo_Click" Margin="0 5 0 0" Height="24">
                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Background="Transparent" Height="25">
                             <Image Source="images/i.png" Width="20" Height="20"/>
