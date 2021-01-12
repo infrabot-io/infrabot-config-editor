@@ -32,6 +32,9 @@
 
 <hr>
 
+## Overview
+<img src="igtio/assets/images/app.png" alt="App">
+
 ## Documentation
 
 Get started with infrabot, learn how to configure infrabot for your organization config.json with Infrabot UI Configurator.
