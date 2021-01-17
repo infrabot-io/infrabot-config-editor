@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Input;
 using System.Collections.Generic;
 
-namespace TelegramBotWpf
+namespace TelegramBotConfigEditor
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -99,17 +99,10 @@ namespace TelegramBotWpf
                 config.telegram_enable_reminder = (bool)telegram_enable_reminder.IsChecked;
                 config.telegram_enable_reloadconfig = (bool)telegram_enable_reloadconfig.IsChecked;
                 config.telegram_enable_emergency = (bool)telegram_enable_emergency.IsChecked;
+                config.telegram_enable_showmyid = (bool)telegram_enable_showmyid.IsChecked;
                 config.telegram_powershell_path = telegram_powershell_path.Text;
                 config.telegram_powershell_executionpolicy = telegram_powershell_executionpolicy.Text;
-                config.telegram_logs_path = telegram_logs_path.Text;
                 config.telegram_result_max_length = Convert.ToInt32(telegram_result_max_length.Text);
-                //allowed chats and users
-                List<long> telegram_allowed_chats_id_array = new List<long> { };
-                foreach (AllowedIDs id in telegram_allowed_chats_id_add_list.Items)
-                {
-                    telegram_allowed_chats_id_array.Add(id.ID);
-                }
-                config.telegram_allowed_chats_id = telegram_allowed_chats_id_array;
                 List<int> telegram_allowed_users_id_array = new List<int> { };
                 foreach (AllowedIDs id in telegram_allowed_users_id_add_list.Items)
                 {
@@ -124,12 +117,6 @@ namespace TelegramBotWpf
                     telegram_allowed_users_id_emergency_array.Add(id.ID);
                 }
                 config.telegram_allowed_users_id_emergency = telegram_allowed_users_id_emergency_array;
-                List<long> telegram_allowed_chats_id_emergency_array = new List<long> { };
-                foreach (AllowedIDs id in telegram_allowed_chats_id_emergency_list.Items)
-                {
-                    telegram_allowed_chats_id_emergency_array.Add(id.ID);
-                }
-                config.telegram_allowed_chats_id_emergency = telegram_allowed_chats_id_emergency_array;
 
                 //reloadconfig allowed chats and users
                 List<int> telegram_allowed_users_id_reloadconfig_array = new List<int> { };
@@ -138,12 +125,6 @@ namespace TelegramBotWpf
                     telegram_allowed_users_id_reloadconfig_array.Add(id.ID);
                 }
                 config.telegram_allowed_users_id_reloadconfig = telegram_allowed_users_id_reloadconfig_array;
-                List<long> telegram_allowed_chats_id_reloadconfig_array = new List<long> { };
-                foreach (AllowedIDs id in telegram_allowed_chats_id_reloadconfig_list.Items)
-                {
-                    telegram_allowed_chats_id_reloadconfig_array.Add(id.ID);
-                }
-                config.telegram_allowed_chats_id_reloadconfig = telegram_allowed_chats_id_reloadconfig_array;
 
                 //getcommands allowed chats and users
                 List<int> telegram_allowed_users_id_getcommands_array = new List<int> { };
@@ -152,13 +133,7 @@ namespace TelegramBotWpf
                     telegram_allowed_users_id_getcommands_array.Add(id.ID);
                 }
                 config.telegram_allowed_users_id_getcommands = telegram_allowed_users_id_getcommands_array;
-                List<long> telegram_allowed_chats_id_getcommands_array = new List<long> { };
-                foreach (AllowedIDs id in telegram_allowed_chats_id_getcommands_list.Items)
-                {
-                    telegram_allowed_chats_id_getcommands_array.Add(id.ID);
-                }
-                config.telegram_allowed_chats_id_getcommands = telegram_allowed_chats_id_getcommands_array;
-                
+
                 //remindme allowed chats and users
                 List<int> telegram_allowed_users_id_remindme_array = new List<int> { };
                 foreach (AllowedIDs id in telegram_allowed_users_id_remindme_list.Items)
@@ -166,12 +141,6 @@ namespace TelegramBotWpf
                     telegram_allowed_users_id_remindme_array.Add(id.ID);
                 }
                 config.telegram_allowed_users_id_remindme = telegram_allowed_users_id_remindme_array;
-                List<long> telegram_allowed_chats_id_remindme_array = new List<long> { };
-                foreach (AllowedIDs id in telegram_allowed_chats_id_remindme_list.Items)
-                {
-                    telegram_allowed_chats_id_remindme_array.Add(id.ID);
-                }
-                config.telegram_allowed_chats_id_remindme = telegram_allowed_chats_id_remindme_array;
 
                 string config_serialized = JsonConvert.SerializeObject(config);
                 File.WriteAllText(saveFileDialog.FileName, config_serialized);
@@ -219,38 +188,21 @@ namespace TelegramBotWpf
             }
         }
 
-        private void ShowCommandsWindow(object sender, RoutedEventArgs e)
-        {
-            CommandsWindow cw = new CommandsWindow();
-            cw.ShowDialog();
-        }
-
         private void AddItemToAllowedList(object sender, RoutedEventArgs e)
         {
             try
             {
                 Button button = (Button)sender;
-                if (button.Name == "telegram_allowed_chats_id_add_button")
-                    telegram_allowed_chats_id_add_list.Items.Add(new AllowedIDs { ID = Convert.ToInt32(telegram_allowed_chats_id_add_text.Text) });
-                else if (button.Name == "telegram_allowed_users_id_add_button")
+                if (button.Name == "telegram_allowed_users_id_add_button")
                     telegram_allowed_users_id_add_list.Items.Add(new AllowedIDs { ID = Convert.ToInt32(telegram_allowed_users_id_add_text.Text) });
                 else if (button.Name == "telegram_allowed_users_id_emergency_add_button")
                     telegram_allowed_users_id_emergency_list.Items.Add(new AllowedIDs { ID = Convert.ToInt32(telegram_allowed_users_id_emergency_add_text.Text) });
-                else if (button.Name == "telegram_allowed_chats_id_emergency_add_button")
-                    telegram_allowed_chats_id_emergency_list.Items.Add(new AllowedIDs { ID = Convert.ToInt32(telegram_allowed_chats_id_emergency_add_text.Text) });
                 else if (button.Name == "telegram_allowed_users_id_reloadconfig_add_button")
                     telegram_allowed_users_id_reloadconfig_list.Items.Add(new AllowedIDs { ID = Convert.ToInt32(telegram_allowed_users_id_reloadconfig_add_text.Text) });
-                else if (button.Name == "telegram_allowed_chats_id_reloadconfig_add_button")
-                    telegram_allowed_chats_id_reloadconfig_list.Items.Add(new AllowedIDs { ID = Convert.ToInt32(telegram_allowed_chats_id_reloadconfig_add_text.Text) });
                 else if (button.Name == "telegram_allowed_users_id_getcommands_add_button")
                     telegram_allowed_users_id_getcommands_list.Items.Add(new AllowedIDs { ID = Convert.ToInt32(telegram_allowed_users_id_getcommands_add_text.Text) });
-                else if (button.Name == "telegram_allowed_chats_id_getcommands_add_button")
-                    telegram_allowed_chats_id_getcommands_list.Items.Add(new AllowedIDs { ID = Convert.ToInt32(telegram_allowed_chats_id_getcommands_add_text.Text) });
                 else if (button.Name == "telegram_allowed_users_id_remindme_add_button")
                     telegram_allowed_users_id_remindme_list.Items.Add(new AllowedIDs { ID = Convert.ToInt32(telegram_allowed_users_id_remindme_add_text.Text) });
-                else if (button.Name == "telegram_allowed_chats_id_remindme_add_button")
-                    telegram_allowed_chats_id_remindme_list.Items.Add(new AllowedIDs { ID = Convert.ToInt32(telegram_allowed_chats_id_remindme_add_text.Text) });
-
 
             }
             catch { }
@@ -261,26 +213,16 @@ namespace TelegramBotWpf
             try
             {
                 Button btn = sender as Button;
-                if (btn.Name == "telegram_allowed_chats_id_delete_button")
-                    telegram_allowed_chats_id_add_list.Items.Remove((AllowedIDs)btn.DataContext);
-                else if (btn.Name == "telegram_allowed_users_id_delete_button")
+                if (btn.Name == "telegram_allowed_users_id_delete_button")
                     telegram_allowed_users_id_add_list.Items.Remove((AllowedIDs)btn.DataContext);
                 else if (btn.Name == "telegram_allowed_users_id_emergency_delete_button")
                     telegram_allowed_users_id_emergency_list.Items.Remove((AllowedIDs)btn.DataContext);
-                else if (btn.Name == "telegram_allowed_chats_id_emergency_delete_button")
-                    telegram_allowed_chats_id_emergency_list.Items.Remove((AllowedIDs)btn.DataContext);
                 else if (btn.Name == "telegram_allowed_users_id_reloadconfig_delete_button")
                     telegram_allowed_users_id_reloadconfig_list.Items.Remove((AllowedIDs)btn.DataContext);
-                else if (btn.Name == "telegram_allowed_chats_id_reloadconfig_delete_button")
-                    telegram_allowed_chats_id_reloadconfig_list.Items.Remove((AllowedIDs)btn.DataContext);
                 else if (btn.Name == "telegram_allowed_users_id_getcommands_delete_button")
                     telegram_allowed_users_id_getcommands_list.Items.Remove((AllowedIDs)btn.DataContext);
-                else if (btn.Name == "telegram_allowed_chats_id_getcommands_delete_button")
-                    telegram_allowed_chats_id_getcommands_list.Items.Remove((AllowedIDs)btn.DataContext);
                 else if (btn.Name == "telegram_allowed_users_id_remindme_delete_button")
                     telegram_allowed_users_id_remindme_list.Items.Remove((AllowedIDs)btn.DataContext);
-                else if (btn.Name == "telegram_allowed_chats_id_remindme_delete_button")
-                    telegram_allowed_chats_id_remindme_list.Items.Remove((AllowedIDs)btn.DataContext);
             }
             catch { }
         }
@@ -288,15 +230,10 @@ namespace TelegramBotWpf
         private void InitFormWithConfig(Config config)
         {
             telegram_allowed_users_id_add_list.Items.Clear();
-            telegram_allowed_chats_id_add_list.Items.Clear();
             telegram_allowed_users_id_emergency_list.Items.Clear();
-            telegram_allowed_chats_id_emergency_list.Items.Clear();
             telegram_allowed_users_id_reloadconfig_list.Items.Clear();
-            telegram_allowed_chats_id_reloadconfig_list.Items.Clear();
             telegram_allowed_users_id_getcommands_list.Items.Clear();
-            telegram_allowed_chats_id_getcommands_list.Items.Clear();
             telegram_allowed_users_id_remindme_list.Items.Clear();
-            telegram_allowed_chats_id_remindme_list.Items.Clear();
 
             telegram_bot_token.Text = config.telegram_bot_token;
             telegram_enable_logging.IsChecked = config.telegram_enable_logging;
@@ -339,15 +276,19 @@ namespace TelegramBotWpf
                 telegram_enable_emergency.Content = "False";
             }
 
+            telegram_enable_showmyid.IsChecked = config.telegram_enable_showmyid;
+            if (config.telegram_enable_showmyid)
+            {
+                telegram_enable_showmyid.Content = "True";
+            }
+            else
+            {
+                telegram_enable_showmyid.Content = "False";
+            }
+
             telegram_powershell_path.Text = config.telegram_powershell_path;
             telegram_powershell_executionpolicy.Text = config.telegram_powershell_executionpolicy;
-            telegram_logs_path.Text = config.telegram_logs_path;
             telegram_result_max_length.Text = config.telegram_result_max_length.ToString();
-
-            foreach (int AllowedChat in config.telegram_allowed_chats_id)
-            {
-                telegram_allowed_chats_id_add_list.Items.Add(new AllowedIDs { ID = Convert.ToInt32(AllowedChat) });
-            }
 
             foreach (int AllowedUser in config.telegram_allowed_users_id)
             {
@@ -359,19 +300,9 @@ namespace TelegramBotWpf
                 telegram_allowed_users_id_emergency_list.Items.Add(new AllowedIDs { ID = Convert.ToInt32(AllowedUser) });
             }
 
-            foreach (long AllowedChat in config.telegram_allowed_chats_id_emergency)
-            {
-                telegram_allowed_chats_id_emergency_list.Items.Add(new AllowedIDs { ID = Convert.ToInt32(AllowedChat) });
-            }
-
             foreach (int AllowedUser in config.telegram_allowed_users_id_reloadconfig)
             {
                 telegram_allowed_users_id_reloadconfig_list.Items.Add(new AllowedIDs { ID = Convert.ToInt32(AllowedUser) });
-            }
-
-            foreach (long AllowedChat in config.telegram_allowed_users_id_reloadconfig)
-            {
-                telegram_allowed_chats_id_reloadconfig_list.Items.Add(new AllowedIDs { ID = Convert.ToInt32(AllowedChat) });
             }
 
             foreach (int AllowedUser in config.telegram_allowed_users_id_getcommands)
@@ -379,53 +310,33 @@ namespace TelegramBotWpf
                 telegram_allowed_users_id_getcommands_list.Items.Add(new AllowedIDs { ID = Convert.ToInt32(AllowedUser) });
             }
 
-            foreach (long AllowedChat in config.telegram_allowed_chats_id_getcommands)
-            {
-                telegram_allowed_chats_id_getcommands_list.Items.Add(new AllowedIDs { ID = Convert.ToInt32(AllowedChat) });
-            }
-
             foreach (int AllowedUser in config.telegram_allowed_users_id_remindme)
             {
                 telegram_allowed_users_id_remindme_list.Items.Add(new AllowedIDs { ID = Convert.ToInt32(AllowedUser) });
-            }
-
-            foreach (long AllowedChat in config.telegram_allowed_chats_id_remindme)
-            {
-                telegram_allowed_chats_id_remindme_list.Items.Add(new AllowedIDs { ID = Convert.ToInt32(AllowedChat) });
             }
         }
 
         private void CleanFormData()
         {
             telegram_allowed_users_id_add_list.Items.Clear();
-            telegram_allowed_chats_id_add_list.Items.Clear();
             telegram_allowed_users_id_emergency_list.Items.Clear();
-            telegram_allowed_chats_id_emergency_list.Items.Clear();
             telegram_allowed_users_id_reloadconfig_list.Items.Clear();
-            telegram_allowed_chats_id_reloadconfig_list.Items.Clear();
             telegram_allowed_users_id_getcommands_list.Items.Clear();
-            telegram_allowed_chats_id_getcommands_list.Items.Clear();
             telegram_allowed_users_id_remindme_list.Items.Clear();
-            telegram_allowed_chats_id_remindme_list.Items.Clear();
             telegram_bot_token.Text = "";
             telegram_enable_logging.IsChecked = false;
             telegram_enable_reminder.IsChecked = false;
             telegram_enable_reloadconfig.IsChecked = false;
             telegram_enable_emergency.IsChecked = false;
+            telegram_enable_showmyid.IsChecked = false;
             telegram_powershell_path.Text = "";
             telegram_powershell_executionpolicy.Text = "";
-            telegram_logs_path.Text = "";
             telegram_result_max_length.Text = "";
-            telegram_allowed_chats_id_add_text.Text = "";
             telegram_allowed_users_id_add_text.Text = "";
             telegram_allowed_users_id_emergency_add_text.Text = "";
-            telegram_allowed_chats_id_emergency_add_text.Text = "";
             telegram_allowed_users_id_reloadconfig_add_text.Text = "";
-            telegram_allowed_chats_id_reloadconfig_add_text.Text = "";
             telegram_allowed_users_id_getcommands_add_text.Text = "";
-            telegram_allowed_chats_id_getcommands_add_text.Text = "";
             telegram_allowed_users_id_remindme_add_text.Text = "";
-            telegram_allowed_chats_id_remindme_add_text.Text = "";
         }
 
         private static void RunCmdWithArguments(string arguments)

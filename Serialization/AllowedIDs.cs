@@ -1,6 +1,6 @@
 using System;
 
-namespace TelegramBotWpf
+namespace TelegramBotConfigEditor
 {
     public class AllowedIDs
     {

@@ -1,7 +1,7 @@
-﻿<Application x:Class="TelegramBotWpf.App"
+﻿<Application x:Class="TelegramBotConfigEditor.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:TelegramBotWpf"
+             xmlns:local="clr-namespace:TelegramBotConfigEditor"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

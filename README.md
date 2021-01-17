@@ -6,7 +6,7 @@
 <p align="center">
   <img src="igtio/assets/images/infrabot_gui.png" alt="infrabot-logo" width="120px" height="120px"/>
   <br>
-  <i>infrabot is a system service which allows you to create your own commandlets to control your infrastructure using Telegram Bot</i>
+  <i>infrabot config editor is a tool which allows you to easily make changes to your infrastructure using Telegram Bot configuration file</i>
   <br>
 </p>
 
