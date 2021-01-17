@@ -2,7 +2,7 @@
   <img src="igtio/assets/images/banner.png" alt="infrabot-logo" width="900px" height="97px"/>
 </p>
 
-<h1 align="center">infrabot GUI Configurator - easily configure your infrastructure Telegram bot</h1>
+<h1 align="center">infrabot Config Editor - easily configure your infrastructure Telegram bot</h1>
 <p align="center">
   <img src="igtio/assets/images/infrabot_gui.png" alt="infrabot-logo" width="120px" height="120px"/>
   <br>
@@ -42,7 +42,7 @@ Get started with infrabot, learn how to configure infrabot for your organization
 - [Getting Started][quickstart]
 - [Configure Bot][configurebot]
 - [Config file Overview][configurebot]
-- [GUI Tool][guitool]
+- [Config Editor][configeditor]
 - [Infrabot Service][infrabotservice]
 
 ## Setup
@@ -61,7 +61,7 @@ You can contribute to infrabot by finding bugs, creating new functionality or wr
 [quickstart]: https://infrabot.io/documentation/gettingstarted
 [configurebot]: https://infrabot.io/documentation/configurebot
 [configoverview]: https://infrabot.io/documentation/configoverview
-[guitool]: https://infrabot.io/documentation/guitool
+[configeditor]: https://infrabot.io/documentation/configeditor
 [infrabotservice]: https://infrabot.io/documentation/infrabotservice
 [netcore50]: https://dotnet.microsoft.com/download/dotnet/5.0
 [downloadinfrabot]:https://infrabot.io/download
