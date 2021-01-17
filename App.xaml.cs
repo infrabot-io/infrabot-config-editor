@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace TelegramBotWpf
+namespace TelegramBotConfigEditor
 {
     /// <summary>
     /// Interaction logic for App.xaml
