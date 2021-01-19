@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="igtio/assets/images/banner.png" alt="infrabot-logo" width="900px" height="97px"/>
+  <img src="iceio/assets/images/banner.png" alt="infrabot-logo" width="900px" height="97px"/>
 </p>
 
 <h1 align="center">infrabot Config Editor - easily configure your infrastructure Telegram bot</h1>
 <p align="center">
-  <img src="igtio/assets/images/infrabot_gui.png" alt="infrabot-logo" width="120px" height="120px"/>
+  <img src="iceio/assets/images/infrabot_gui.png" alt="infrabot-logo" width="120px" height="120px"/>
   <br>
   <i>infrabot config editor is a tool which allows you to easily make changes to your infrastructure using Telegram Bot configuration file</i>
   <br>
@@ -26,14 +26,14 @@
   </a>
   <br><br>
   <a href="https://www.buymeacoffee.com/infrabot.io" target="_blank">
-    <img width="168px" height="48px" src="igtio/assets/images/bymeabeer.png" alt="Buy Me A Beer">
+    <img width="168px" height="48px" src="iceio/assets/images/bymeabeer.png" alt="Buy Me A Beer">
   </a>
 </p>
 
 <hr>
 
 ## Overview
-<img src="igtio/assets/images/app.png" alt="App">
+<img src="iceio/assets/images/app.png" alt="App">
 
 ## Documentation
 
