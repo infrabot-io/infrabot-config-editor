@@ -150,12 +150,12 @@ namespace TelegramBotConfigEditor
 
         private void MainMenuInfrabotIO_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://infrabot.io");
+            Process.Start(new ProcessStartInfo("https://infrabot.io") { UseShellExecute = true });
         }
 
         private void MainMenuDocumentation_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://infrabot.io/documentation");
+            Process.Start(new ProcessStartInfo("https://infrabot.io/documentation") { UseShellExecute = true });
         }
 
         private void MainMenuCloseFile_Click(object sender, RoutedEventArgs e)
